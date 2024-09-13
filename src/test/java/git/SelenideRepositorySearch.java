@@ -8,16 +8,16 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class SelenideRepositorySearch {
+public class SelenideRepositorySearchTest {
     @BeforeAll
     static void beforeall(){
         Configuration.browserSize = "1920x1080";
-        Configuration.reopenBrowserOnFail = true;
+        Configuration.reopenBrowserOnFail = false;//для откладки тестов
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
     }
     @Test
-    void shouldFindJUnit5CodeOnSelenideWikiPage (){
+    void shouldFindJUnit5CodeOnSelenideWikiPageTest (){
         open("/selenide/selenide");
         $("a[href*='wiki'][id=wiki-tab]").click();
         $("div[class=markdown-body]").shouldHave(text("Soft assertions"));
